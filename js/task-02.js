@@ -7,8 +7,16 @@ const ingredients = [
   'Condiments',
 ];
 
-// const ingredientsList = document.getElementById('ingredients');
 
+// 1) варіант
+// const ulIngredients = document.getElementById("ingredients");
+
+// const liElementsHTML = ingredients.map(ingredient => `<li class="item">${ingredient}</li>`).join('');
+
+// ulIngredients.insertAdjacentHTML("beforeend", liElementsHTML);
+
+// 2) варіант
+// const ingredientsList = document.getElementById('ingredients');
 // ingredients.forEach(ingredient => {
 //   const listItem = document.createElement('li');
 //   listItem.textContent = ingredient;
@@ -16,8 +24,16 @@ const ingredients = [
 //   ingredientsList.appendChild(listItem);
 // });
 
+
+
+// 3) варіант і надіюсь останній))
 const ulIngredients = document.getElementById("ingredients");
 
-const liElementsHTML = ingredients.map(ingredient => `<li class="item">${ingredient}</li>`).join('');
+const liElements = ingredients.map(ingredient => {
+  const li = document.createElement("li");
+  li.textContent = ingredient;
+  li.classList.add("item");
+  return li;
+});
 
-ulIngredients.insertAdjacentHTML("beforeend", liElementsHTML);
+ulIngredients.append(...liElements);
